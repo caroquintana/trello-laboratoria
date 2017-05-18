@@ -54,7 +54,6 @@
 		};
 		
 
-
 		//funcion para mostrar lo que tiene el input al presionar el botón
 		// function presionBoton(){
 		// 	var traerBoton = document.getElementById("boton-creado");
