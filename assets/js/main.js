@@ -1,66 +1,81 @@
 //1. Crear el elemento
 //2. Crear el nodo de texto
 //3. Añadir el nodo de texto al elemento
-//4. Agregar atributos al elemento
+//4. Agregar atributos al elemento (atributos lo cambié a la posición 3)
 //5. Agregar el elemento al documento(primero buscar donde va a estar, luego incrustar el elemento)
-
+//function principal(){
 	var nuevoInput= function(){
 		var crearInput = document.createElement("input");
-		var contenidoinput = document.createTextNode("Esta es una nueva lista");
-		crearInput.appendChild(contenidoinput);
+		var contenidoinput = document.createTextNode(" ");
+		crearInput.setAttribute("type", "text");
 		crearInput.setAttribute("id", "input-creado");
-		document.getElementById("contenedor-anadir-lista").appendChild(crearInput);
+		crearInput.setAttribute("placeholder", "Nombre de la lista");		
+		crearInput.appendChild(contenidoinput);
+		document.getElementById("contenedorlista").appendChild(crearInput);
 	};
 
 	var nuevoBoton= function(){
 		var crearBoton = document.createElement("button");
-		var contenidoboton = document.createTextNode("Este es un botón");
-		crearBoton.appendChild(contenidoboton);
+		var contenidoboton = document.createTextNode("Crear nueva lista");
 		crearBoton.setAttribute("id", "boton-creado");
-		document.getElementById("contenedor-anadir-lista").appendChild(crearBoton);
+		crearBoton.setAttribute("onclick", "presionBoton()")	
+		crearBoton.appendChild(contenidoboton);
+		document.getElementById("contenedorlista").appendChild(crearBoton);
 	};
 
-	/*var mostrarTarea = function(){
+	var mostrarTarea = function(){
 		var valorInput = document.getElementById("input-creado").value;
 		document.getElementById("lista-input").appendChild(valorInput);
-	};*/
-
-
+	};
 
 		//funcion añadir una lista al presionar click
-		function anadirLista(nuevoInput, nuevoBoton) {
+		function anadirLista() {
 			var aLista = document.getElementById("anadir_lista");
 			aLista.addEventListener("click", nuevoInput);
 			aLista.addEventListener("click", nuevoBoton);		
 		};
 		anadirLista();
 
+
 		function presionBoton(){
-			var input= document.getElementById("input-creado").value;
-			var padre=document.getElementById("lista-input");
-			var texto= document.createTextNode(input);
-			var hijo = document.createElement("p");
-			hijo.classList.add("box-hijo");
-			hijo.appendChild(texto);
-			padre.appendChild(hijo);
+			var textoNuevaLista= document.getElementById("input-creado").value;
+			var textoACaja=document.getElementById("lista-input");
+			var textoEnNodo= document.createTextNode(textoNuevaLista);
+			var etiquetaTexto = document.createElement("h1");
+			var crearSegundoBoton = document.createElement("button");
+			var contenidoboton = document.createTextNode("+ Añadir una tarjeta");
+			etiquetaTexto.classList.add("box-hijo");
+			etiquetaTexto.appendChild(textoEnNodo);
+			textoACaja.appendChild(etiquetaTexto);
+			crearSegundoBoton.setAttribute("id", "segundo-boton");
+			crearSegundoBoton.appendChild(contenidoboton);
+			document.getElementById("lista-input").appendChild(crearSegundoBoton);
 
-		}
-	presionBoton()
-
-
+		};
+		
 
 
 		//funcion para mostrar lo que tiene el input al presionar el botón
-		/*function presionBoton(){
-			var traerBoton = document.getElementById("boton-creado");
-			traerBoton.addEventListener("click", function(){
-			var valorInput = document.getElementById("input-creado").value;
-			var nodo = document.createTextNode(valorInput);
-			document.getElementById("lista-input").appendChild(nodo);
-			});
-		};*/
+		// function presionBoton(){
+		// 	var traerBoton = document.getElementById("boton-creado");
+		// 	traerBoton.addEventListener("click", mostrarTarea);	
+
+		// };
+		
 
 
+
+
+		//function test(){
+		//	var boton = document.getElementById("boton-creado");
+		//	boton.addEventListener("click",function(){
+		//		alert("Funciono");
+		//	});
+		//}
+		
+//};
+
+//principal();
 
 
 
@@ -73,8 +88,10 @@
 
 
 /*
+
 **input será el título h1
 **desplegar un mensaje clickleable
+
 
 
 //indicamos donde  van a estar las nuevas listas
